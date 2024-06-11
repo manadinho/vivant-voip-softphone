@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setup Wizard</title>
+<style>
+    body {
+        background-color: #f6f6f6;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        text-align: center;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .logo {
+        width: 100px;
+    }
+    .title {
+        color: #14233d;
+    }
+    label {
+        color: #14233d;
+        margin-bottom: 10px;
+        display: block;
+    }
+    input[type="text"] {
+        width: 80%;
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #3f51b5;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #2c3a94;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <img src="./assets/images/logo.jpeg" alt="Logo" class="logo">
+    <h1 class="title">Setup Wizard</h1>
+    <form id="setupForm">
+        <label for="domain">Enter your domain:</label>
+        <input type="text" id="domain" name="domain">
+        <button type="submit">Save Configuration</button>
+    </form>
+</div>
+
+<script src="./assets/js/renderer.js"></script>
+
+<script>
+    document.getElementById('setupForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        setDomain();
+    });
+</script>
+</body>
+</html>

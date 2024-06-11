@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivant Voip</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #loader {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: #555;
+            font-size: 20px;
+            z-index: 1000;
+            animation: fade 2s linear infinite;
+        }
+        @keyframes fade {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        #logout-btn {
+            position: fixed;
+            top: 10px;
+            right: 15px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">Please wait...</div>
+    <button id="logout-btn" onclick="logout()">Logout</button>
+    <iframe id="vivant-softphone-iframe" src="your_iframe_source.html" allow="microphone; autoplay; clipboard-read; clipboard-write; hid" style="width:332px; height:557px; border:none;"></iframe>
+
+    <script src="./assets/js/renderer.js"></script>
+    <script>
+        const loader = document.querySelector('#loader');
+        const iframe = document.querySelector('#vivant-softphone-iframe');
+
+        loader.style.visibility = 'visible';
+
+        iframe.onload = function() {
+            loader.style.visibility = 'hidden';
+        };
+
+        function logout() {
+            // Send a message to the iframe to logout
+            const iframe = document.querySelector('#vivant-softphone-iframe');
+            iframe.contentWindow.postMessage({ action: 'doLogout'}, '*');
+        }
+
+        window.addEventListener('message', (event) => {
+
+            // Handle successfullogin event
+            if (event.data.action === 'onUserLoggedIn') {
+                document.querySelector('#logout-btn').style.visibility = 'visible';
+
+            }
+
+            // Handle logout event
+            if (event.data.action === 'onUserLoggedOut') {
+                document.querySelector('#logout-btn').style.visibility = 'hidden';
+            }
+        });
+    </script>
+</body>
+</html>
