@@ -44,7 +44,7 @@
 </head>
 <body>
     <div id="loader">Please wait...</div>
-    <button id="logout-btn" onclick="logout()">Logout</button>
+    <!-- <button id="logout-btn" onclick="logout()">Logout</button> -->
     <iframe id="vivant-softphone-iframe" src="your_iframe_source.html" allow="microphone; autoplay; clipboard-read; clipboard-write; hid" style="width:332px; height:557px; border:none;"></iframe>
 
     <script src="./assets/js/renderer.js"></script>
@@ -58,25 +58,25 @@
             loader.style.visibility = 'hidden';
         };
 
-        function logout() {
-            // Send a message to the iframe to logout
-            const iframe = document.querySelector('#vivant-softphone-iframe');
-            iframe.contentWindow.postMessage({ action: 'doLogout'}, '*');
-        }
+        // function logout() {
+        //     // Send a message to the iframe to logout
+        //     const iframe = document.querySelector('#vivant-softphone-iframe');
+        //     iframe.contentWindow.postMessage({ action: 'doLogout'}, '*');
+        // }
 
-        window.addEventListener('message', (event) => {
+        // window.addEventListener('message', (event) => {
 
-            // Handle successfullogin event
-            if (event.data.action === 'onUserLoggedIn') {
-                document.querySelector('#logout-btn').style.visibility = 'visible';
+        //     // Handle successfullogin event
+        //     if (event.data.action === 'onUserLoggedIn') {
+        //         document.querySelector('#logout-btn').style.visibility = 'visible';
 
-            }
+        //     }
 
-            // Handle logout event
-            if (event.data.action === 'onUserLoggedOut') {
-                document.querySelector('#logout-btn').style.visibility = 'hidden';
-            }
-        });
+        //     // Handle logout event
+        //     if (event.data.action === 'onUserLoggedOut') {
+        //         document.querySelector('#logout-btn').style.visibility = 'hidden';
+        //     }
+        // });
     </script>
 </body>
 </html>
