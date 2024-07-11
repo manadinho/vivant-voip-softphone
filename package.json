@@ -1,26 +1,35 @@
 {
   "name": "vivant-voip",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a VoIP application for Vivant Corporation. It is used to make calls to other users using the Vivant VoIP application.",
   "homepage": "https://vivantcorp.com",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
-    "build": "electron-builder --mac --linux --win",
+    "build": "electron-builder --win",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
   "build": {
-    "appId": "com.example.jslog",
-    "mac": {
-      "target": "dmg",
-      "icon": "./images/icon.icns"
+    "appId": "vivantcorp.vivant-softphone",
+    "protocols": {
+      "name": "MyApp Protocol Handler",
+      "schemes": ["tel", "callto"]
     },
-    "linux": {
-      "target": "deb"
-    },
-    "win": {
-      "target": "nsis"
+    "files": [
+      "main.js",
+      "register-protocol.reg",
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "*.html"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": true,
+      "include": "installer.nsh"
     }
   },
   "keywords": [],
@@ -39,10 +48,12 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron/fuses": "^1.8.0",
     "electron": "^30.0.6",
+    "electron-builder": "^24.13.3",
     "electron-reload": "^2.0.0-alpha.1"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
-    "electron-store": "^9.0.0"
+    "electron-store": "^9.0.0",
+    "regedit": "^5.1.3"
   }
 }

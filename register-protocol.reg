@@ -1,0 +1,38 @@
+Windows Registry Editor Version 5.00
+
+; Register the tel protocol
+[HKEY_CLASSES_ROOT\tel]
+@="URL:Tel Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\tel\shell]
+
+[HKEY_CLASSES_ROOT\tel\shell\open]
+
+[HKEY_CLASSES_ROOT\tel\shell\open\command]
+@="\"C:\\Program Files\\vivant-voip\\vivant-voip.exe\" \"%1\""
+
+; Register the callto protocol
+[HKEY_CLASSES_ROOT\callto]
+@="URL:Callto Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\callto\shell]
+
+[HKEY_CLASSES_ROOT\callto\shell\open]
+
+[HKEY_CLASSES_ROOT\callto\shell\open\command]
+@="\"C:\\Program Files\\vivant-voip\\vivant-voip.exe\" \"%1\""
+
+; Register your app as an option for handling tel protocol
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\tel\UserChoice]
+"Progid"="Applications\\vivant-voip.exe"
+
+; Register your app as an option for handling callto protocol
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\callto\UserChoice]
+"Progid"="Applications\\vivant-voip.exe"
+
+; Application registration
+[HKEY_LOCAL_MACHINE\Software\Classes\Applications\vivant-voip.exe]
+@="vivant-voip"
+"FriendlyTypeName"="vivant-voip"

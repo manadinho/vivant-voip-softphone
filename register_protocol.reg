@@ -1,0 +1,23 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\tel]
+@="URL:tel Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\tel\shell]
+
+[HKEY_CLASSES_ROOT\tel\shell\open]
+
+[HKEY_CLASSES_ROOT\tel\shell\open\command]
+@="\"C:\\Program Files (x86)\\Vivant Voip\\vivant-voip.exe\" \"%1\""
+
+[HKEY_CLASSES_ROOT\callto]
+@="URL:callto Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\callto\shell]
+
+[HKEY_CLASSES_ROOT\callto\shell\open]
+
+[HKEY_CLASSES_ROOT\callto\shell\open\command]
+@="\"C:\\Program Files (x86)\\Vivant Voip\\vivant-voip.exe\" \"%1\""
